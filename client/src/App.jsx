@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import Nav from "./components/Nav/Nav";
 import { useEffect, useState } from "react";
 import Footer from "./components/Footer/Footer";
+import PageNotFound from "./components/ErrorPages/PageNotFound";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -51,7 +52,9 @@ export default function App() {
           </div>
         )}
       <Routes>
+        <Route path="*" element={<PageNotFound /> } />
         <Route path="/" element={<HomePage /> } />
+        
       </Routes>
       {shouldShowFooter && <Footer />}
     </BrowserRouter>
