@@ -124,7 +124,7 @@ const AuthController = {
                 }
             }
             else{
-                return re.json({ Error: "User not found by Givien Email Address"})
+                return res.json({ Error: "User not found by Givien Email Address"})
             }
         }
         catch(err){
