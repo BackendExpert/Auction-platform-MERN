@@ -65,9 +65,11 @@ export default function App() {
         <Route path="/register" element={<SignUp /> } />
         <Route path="/ForgetPassword" element={<ForgetPassword /> } />
         <Route path="/PasswordReset/:token" element={<ResetPassword /> } />
-        <Route path="/Dashboard/" element={<PrivateRoute element={<Dashboard /> }/>} >
+        
+        <Route path="/Dashboard/" element={ <PrivateRoute element={<Dashboard />} />} >
           <Route path="Home" element={<DashHome /> } />
         </Route>
+
         
       </Routes>
       {shouldShowFooter && <Footer />}

@@ -23,24 +23,27 @@ const SignIn = () => {
     const headlesignin = async (e) => {
         e.preventDefault()
         
-        try {
-            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/signin', signindata);
-    
-            if (res.data.Status === "Success") {
-                alert("Login Success");
-                console.log("Token:", res.data.Token); 
-                localStorage.setItem("login", res.data.Token);
-                secureLocalStorage.setItem("loginE", res.data.Result.email);
-                secureLocalStorage.setItem("loginU", res.data.Result.username);
-                secureLocalStorage.setItem("loginR", res.data.Result.role);
-                navigate('/Dashboard/Home');
-            } else {
-                alert(res.data.Error);
-            }
-        } catch (err) {
-            console.error("Error during sign-in:", err);
+        try{
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/signin', signindata)
+            .then(res => {
+                if(res.data.Status === "Success"){
+                    alert("Login Success")
+                    navigate('/Dashboard/Home')                    
+                    localStorage.setItem("login", res.data.Token)
+                    secureLocalStorage.setItem("loginE", res.data.Result.email)
+                    secureLocalStorage.setItem("loginU", res.data.Result.username)
+                    secureLocalStorage.setItem("loginR", res.data.Result.role)
+                }
+                else{
+                    alert(res.data.Error)
+                }
+            })
+        }
+        catch(err){
+            console.log(err)
         }
     }
+
 
 
   return (
