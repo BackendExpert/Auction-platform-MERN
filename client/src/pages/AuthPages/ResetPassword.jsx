@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import InputDefult from '../../components/Forms/InputDefult';
 import DefultBtn from '../../components/Buttons/DefultBtn';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const ResetPassword = () => {
     const navigate = useNavigate()
+    const { token } = useParams()
     const [resetpassdata, setresetpassdata] = useState({
         newpass: '',
         confirmpass: '',
@@ -23,7 +24,7 @@ const ResetPassword = () => {
         e.preventDefault()
         // console.log(resetpassdata)
         try{
-            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/resetpass', resetpassdata)
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/resetpass/' + token, resetpassdata)
             .then(res => {
                 if(res.data.Status === "Success"){
                     alert("Password Reset Successful")

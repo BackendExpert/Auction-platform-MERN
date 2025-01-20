@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import InputDefult from '../../components/Forms/InputDefult';
 import DefultBtn from '../../components/Buttons/DefultBtn';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import secureLocalStorage from 'react-secure-storage'
 
 const SignIn = () => {
+    const navigate = useNavigate()
     const [signindata, setsignindata] = useState({
         email: '',
         password: '',
@@ -26,6 +28,11 @@ const SignIn = () => {
             .then(res => {
                 if(res.data.Status === "Success"){
                     alert("Login Success")
+                    localStorage.setItem("login", res.data.Token)
+                    secureLocalStorage.setItem("loginE", res.data.Result.email)
+                    secureLocalStorage.setItem("loginU", res.data.Result.username)
+                    secureLocalStorage.setItem("loginR", res.data.Result.role)
+                    navigate('/Dashboard/Home')                    
                 }
                 else{
                     alert(res.data.Error)
