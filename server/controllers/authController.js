@@ -105,7 +105,7 @@ const AuthController = {
 
                 const resultNewToken = await newpwtToken.save()
 
-                const resetUrl = `${process.env.APP_PROTOCOL}://${process.env.APP_HOST}/ResetPassword/${resetTokenHash}`;
+                const resetUrl = `${process.env.APP_PROTOCOL}://${process.env.APP_HOST}/PasswordReset/${resetTokenHash}`;
 
                 if(resultNewToken){
                     const mailOptions = {
@@ -125,6 +125,46 @@ const AuthController = {
             }
             else{
                 return res.json({ Error: "User not found by Givien Email Address"})
+            }
+        }
+        catch(err){
+            console.log(err)
+        }
+    },
+
+    passreset: async(req, res) => {
+        try{
+            const {
+                newpass,
+                confirmpass,
+            } = req.body
+
+            const token = req.params.token
+
+            if(newpass === confirmpass){
+                const checktoken = await PwdResetToken.findOne({ token: token })
+
+                if(checktoken){
+                    const hashnewpass = await bcrypt.hash(newpass, 10)
+
+                    const updatepass = await User.findOneAndUpdate(
+                        { email: checktoken.email },
+                        {
+                            $set: { password: hashnewpass }
+                        },
+                        { new: true }
+                    )
+
+                    if(updatepass){
+                        const deletetoken = await PwdResetToken.findOneAndDelete({  })
+                    }
+                }   
+                else{
+                    return res.json({ Error: "Invalied Token or expired Token..."})
+                }
+            }
+            else{
+                return res.json({ Error: "Passwords not Match"})
             }
         }
         catch(err){
