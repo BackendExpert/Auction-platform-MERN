@@ -122,7 +122,12 @@ const DashSide = () => {
         },
     ]
   return (
-    <div>DashSide</div>
+    <div>
+        <div className="">
+            <h1 className="">GoBidly</h1>
+            
+        </div>
+    </div>
   )
 }
 
