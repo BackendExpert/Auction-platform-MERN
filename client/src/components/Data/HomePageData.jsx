@@ -58,7 +58,6 @@ const HomePageData = () => {
         </div>
 
         <div className="">
-            {visiblecontent}
             <div className="flex justify-end">
                 <div className="flex">
                     <div className="mr-2 cursor-pointer" onClick={() => clickvisible('list')}>
@@ -69,49 +68,97 @@ const HomePageData = () => {
                     </div>
                 </div>
             </div>
-            <div className="md:grid grid-cols-4 gap-4">
-                {
-                    filteredData.map((data, index) => {
+            {
+                (() => {
+                    if(visiblecontent === "grid"){
                         return (
-                            <div className="bg-gray-100 p-4 rounded shadow-md border-b border-[#FF5722] md:my-0 my-4" key={index}>
-                                <h1 className="text-lg font-semibold text-gray-400">{data.name}</h1>
-                                <center>
-                                    <img src={data.img} alt="" className='w-auto h-40'/>
-                                </center>
+                            <div className="md:grid grid-cols-4 gap-4">
+                            {
+                                filteredData.map((data, index) => {
+                                    return (
+                                        <div className="bg-gray-100 p-4 rounded shadow-md border-b border-[#FF5722] md:my-0 my-4" key={index}>
+                                            <h1 className="text-lg font-semibold text-gray-400">{data.name}</h1>
+                                            <center>
+                                                <img src={data.img} alt="" className='w-auto h-40'/>
+                                            </center>
+            
+                                            <div className="my-4">
+                                                <h1 className="text-gray-500 font-semibold pt-4">
+                                                    Bid Start At {data.start_at} - {data.end_at}
+                                                </h1>
+            
+                                                <div className="py-4">
+                                                    {data.desc}
+                                                </div>
+                                            </div>
+            
+                                            <div className="">
+                                                <h1 className="">Totel Buyers : <span className='font-semibold text-[#FF5722]'>{data.buyers}</span></h1>
+                                            </div>
+            
+                                            <div className="pt-4">
+                                                <DefultBtn 
+                                                    type={'button'}
+                                                    btnvalue={'Bid Now'}
+                                                />
+                                            </div>
+            
+                                        </div>
+                                    )
+                                })
+                            }
+                                {filteredData.length === 0 && (
+                                    <tr>
+                                        <td colSpan="5" className="text-center text-gray-500">
+                                            No Data found
+                                        </td>
+                                    </tr>
+                                )}
+                        </div>
+                        )
+                    }
 
-                                <div className="my-4">
-                                    <h1 className="text-gray-500 font-semibold pt-4">
-                                        Bid Start At {data.start_at} - {data.end_at}
-                                    </h1>
-
-                                    <div className="py-4">
-                                        {data.desc}
-                                    </div>
-                                </div>
-
-                                <div className="">
-                                    <h1 className="">Totel Buyers : <span className='font-semibold text-[#FF5722]'>{data.buyers}</span></h1>
-                                </div>
-
-                                <div className="pt-4">
-                                    <DefultBtn 
-                                        type={'button'}
-                                        btnvalue={'Bid Now'}
-                                    />
-                                </div>
-
+                    else if(visiblecontent === "list"){
+                        return (
+                            <div className="">
+                                {
+                                    filteredData.map((data, index) => {
+                                        return (
+                                            <div className="w-full bg-gray-100 p-4 my-4 border-b border-[#FF5722] rounded-md shadow-md" key={index}>
+                                                <h1 className="my-4 text-lg text-gray-500">{data.name}</h1>
+                                                <div className="flex">
+                                                    <div className="w-1/3">
+                                                        <img src={data.img} alt="" className='h-40 w-auto'/>
+                                                    </div>
+                                                    <div className="w-full pl-4">
+                                                        {data.desc}
+                                                    </div>
+                                                    <div className="w-1/3">
+                                                        <h1 className="text-center">Buyers : <span className='text-[#FF5722] font-semibold'>{data.buyers}</span></h1>
+                                                        <div className="">
+                                                            <h1 className="text-gray-500 font-semibold pt-4 text-center">
+                                                                Bid Start At {data.start_at} - {data.end_at}
+                                                            </h1>
+                                                        </div>
+                                                        <div className="pt-4">
+                                                            <center>
+                                                                <DefultBtn 
+                                                                    type={'button'}
+                                                                    btnvalue={'Bid Now'}
+                                                                />
+                                                            </center>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
                         )
-                    })
-                }
-                    {filteredData.length === 0 && (
-                        <tr>
-                            <td colSpan="5" className="text-center text-gray-500">
-                                No Data found
-                            </td>
-                        </tr>
-                    )}
-            </div>
+                    }
+                })()
+            }
         </div>
         
     </div>
