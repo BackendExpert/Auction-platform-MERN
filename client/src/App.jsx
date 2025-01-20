@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import Footer from "./components/Footer/Footer";
 import PageNotFound from "./components/ErrorPages/PageNotFound";
 import SignIn from "./pages/AuthPages/SignIn";
+import SignUp from "./pages/AuthPages/SignUp";
+import ResetPassword from "./pages/AuthPages/ResetPassword";
+import ForgetPassword from "./pages/AuthPages/ForgetPassword";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -56,6 +59,9 @@ export default function App() {
         <Route path="*" element={<PageNotFound /> } />
         <Route path="/" element={<HomePage /> } />
         <Route path="/signin" element={<SignIn /> } />
+        <Route path="/register" element={<SignUp /> } />
+        <Route path="/ForgetPassword" element={<ForgetPassword /> } />
+        <Route path="/PasswordReset/:token" element={<ResetPassword /> } />
         
       </Routes>
       {shouldShowFooter && <Footer />}

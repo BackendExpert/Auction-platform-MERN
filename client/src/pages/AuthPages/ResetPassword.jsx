@@ -2,30 +2,32 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import InputDefult from '../../components/Forms/InputDefult';
 import DefultBtn from '../../components/Buttons/DefultBtn';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const SignIn = () => {
-    const [signindata, setsignindata] = useState({
-        email: '',
-        password: '',
+const ResetPassword = () => {
+    const navigate = useNavigate()
+    const [resetpassdata, setresetpassdata] = useState({
+        newpass: '',
+        confirmpass: '',
     })
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setsignindata((prevData) => ({
+        setresetpassdata((prevData) => ({
           ...prevData,
           [name]: value
         }));
     };
 
-    const headlesignin = async (e) => {
+    const headlepassreset = async (e) => {
         e.preventDefault()
-        
+        // console.log(resetpassdata)
         try{
-            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/signin', signindata)
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/resetpass', resetpassdata)
             .then(res => {
                 if(res.data.Status === "Success"){
-                    alert("Login Success")
+                    alert("Password Reset Successful")
+                    navigate('/signin')                    
                 }
                 else{
                     alert(res.data.Error)
@@ -44,29 +46,30 @@ const SignIn = () => {
             <div className="w-full"></div>
             <div className="w-full">
                 <div className="bg-gray-100/20 p-4 shadow-md rounded-md">
-                    <h1 className="text-[#FF5722] font-semibold uppercase text-center">SignIn</h1>
+                    <h1 className="text-[#FF5722] font-semibold uppercase text-center">Reset Password</h1>
 
                     <div className="py-4">
-                        <form onSubmit={headlesignin} method="post">
+                        <form onSubmit={headlepassreset} method="post">
                             <div className="my-4">
-                                <p className="mb-2 text-gray-500">Email Address: </p>
+                                <p className="mb-2 text-gray-500">New Password: </p>
                                 <InputDefult 
-                                    type={'email'}
-                                    value={signindata.email}
-                                    name={'email'}
+                                    type={'password'}
+                                    value={resetpassdata.newpass}
+                                    name={'newpass'}
                                     required={true}
-                                    placeholder={'Enter Email Address'}
+                                    placeholder={'Enter New Password'}
                                     onChange={handleInputChange}
                                 />
                             </div>
+
                             <div className="my-4">
-                                <p className="mb-2 text-gray-500">Password: </p>
+                                <p className="mb-2 text-gray-500">Confirm Password: </p>
                                 <InputDefult 
                                     type={'password'}
-                                    value={signindata.password}
-                                    name={'password'}
+                                    value={resetpassdata.confirmpass}
+                                    name={'confirmpass'}
                                     required={true}
-                                    placeholder={'Enter Password'}
+                                    placeholder={'Confirm Password'}
                                     onChange={handleInputChange}
                                 />
                             </div>
@@ -74,19 +77,10 @@ const SignIn = () => {
                             <div className="">
                                 <DefultBtn 
                                     type={'submit'}
-                                    btnvalue={'SignIn'}
+                                    btnvalue={'Passwrod Reset'}
                                 />
                             </div>
                         </form>
-
-                        <div className="flex justify-between">
-                            <Link to={'/ForgetPassword'}>
-                                <h1 className="text-[#FF5722] font-semibold pt-4">Forget Password</h1>
-                            </Link>
-                            <Link to={'/register'}>
-                                <h1 className="text-[#FF5722] font-semibold pt-4">Create New Account</h1>
-                            </Link>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -96,4 +90,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn
+export default ResetPassword
