@@ -156,7 +156,17 @@ const AuthController = {
                     )
 
                     if(updatepass){
-                        const deletetoken = await PwdResetToken.findOneAndDelete({  })
+                        const deletetoken = await PwdResetToken.findOneAndDelete({ token: token })
+
+                        if(deletetoken){
+                            return res.json({ Status: "Success"})
+                        }
+                        else{
+                            return res.json({ Error: 'Interal Server Error'})
+                        }
+                    }
+                    else{
+                        return res.json({ Error: "Internal Server Error"})
                     }
                 }   
                 else{
