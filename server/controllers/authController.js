@@ -1,6 +1,17 @@
 const User = require("../models/User");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const nodemailer = require('nodemailer');
+const PwdResetToken = require("../models/PwdResetToken");
+const crypto = require('crypto')
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
+    },
+});
 
 const AuthController = {
     siginup: async(req, res) => {
@@ -67,6 +78,53 @@ const AuthController = {
             }
             else{
                 return res.json({ Error: "No user found..."})
+            }
+        }
+        catch(err){
+            console.log(err)
+        }
+    },
+
+    forgetpass: async(req, res) => {
+        try{
+            const { email } = req.body
+
+            const checkemail = await User.findOne({ email: email })
+
+            if(checkemail){
+                const resetToken = crypto.randomBytes(32).toString('hex');
+                const resetTokenHash = crypto.createHash('sha256').update(resetToken).digest('hex');
+                const defultTime = new Date(); 
+                const expireAt = new Date(defultTime.getTime() + 15 * 60000);
+
+                const newpwtToken = new PwdResetToken({
+                    email: email,
+                    token: resetTokenHash,
+                    expire_at: expireAt
+                })
+
+                const resultNewToken = await newpwtToken.save()
+
+                const resetUrl = `${process.env.APP_PROTOCOL}://${process.env.APP_HOST}/ResetPassword/${resetTokenHash}`;
+
+                if(resultNewToken){
+                    const mailOptions = {
+                        from: process.env.EMAIL_USER,
+                        to: email,
+                        subject: "Password Reset",
+                        html: `<h1>Password Reset Link</h1>
+                                <p>Password Reset Token: ${resetUrl}</p>
+                                <p>This token will be expired after 15min</p>
+                                <p>Thank you</p>
+                                <p>Admin</p>
+                        `
+                    };
+                    await transporter.sendMail(mailOptions);
+                    return res.json({ Status: "Success"})
+                }
+            }
+            else{
+                return re.json({ Error: "User not found by Givien Email Address"})
             }
         }
         catch(err){
