@@ -38,10 +38,10 @@ const HomePageData = () => {
   
     );
 
-    const [visiblecontent, setvisiblecontent] = useState('')
+    const [visiblecontent, setvisiblecontent] = useState('grid')
 
-    const clickvisible = ({value}) => {
-        
+    const clickvisible = (value) => {
+        setvisiblecontent(value)
     }
 
 
@@ -58,12 +58,13 @@ const HomePageData = () => {
         </div>
 
         <div className="">
+            {visiblecontent}
             <div className="flex justify-end">
                 <div className="flex">
-                    <div className="mr-2 cursor-pointer">
+                    <div className="mr-2 cursor-pointer" onClick={() => clickvisible('list')}>
                         <FaListUl className='h-6 w-auto fill-gray-500' />
                     </div>
-                    <div className="ml-2 cursor-pointer">
+                    <div className="ml-2 cursor-pointer" onClick={() => clickvisible('grid')}>
                         <IoGrid className='h-6 w-auto fill-gray-500' />
                     </div>
                 </div>
