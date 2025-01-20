@@ -33,6 +33,7 @@ const SignIn = () => {
                     secureLocalStorage.setItem("loginE", res.data.Result.email)
                     secureLocalStorage.setItem("loginU", res.data.Result.username)
                     secureLocalStorage.setItem("loginR", res.data.Result.role)
+                    window.location.reload()
                 }
                 else{
                     alert(res.data.Error)

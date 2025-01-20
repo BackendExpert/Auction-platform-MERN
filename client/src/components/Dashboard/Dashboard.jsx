@@ -8,8 +8,8 @@ import DashFooter from './DashFooter';
 
 const Dashboard = () => {
     const navigate = useNavigate()
-    const EmailUser = secureLocalStorage.getItem("Login1");
-    const RoleUser = secureLocalStorage.getItem("Login2");
+    const EmailUser = secureLocalStorage.getItem("loginE");
+    const RoleUser = secureLocalStorage.getItem("loginR");
     const [openside, setopenside] = useState(false);
 
     const headleopenside = () => {
