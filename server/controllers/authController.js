@@ -21,7 +21,7 @@ const AuthController = {
                 return res.json({ Error: "User Already exists in Given username or Email"})
             }
             else{
-                const hashpass = bcrypt.hash(password, 10)
+                const hashpass = await bcrypt.hash(password, 10)
 
                 const newUser = new User({
                     username: username,
