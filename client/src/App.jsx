@@ -4,6 +4,7 @@ import Nav from "./components/Nav/Nav";
 import { useEffect, useState } from "react";
 import Footer from "./components/Footer/Footer";
 import PageNotFound from "./components/ErrorPages/PageNotFound";
+import SignIn from "./pages/AuthPages/SignIn";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -54,6 +55,7 @@ export default function App() {
       <Routes>
         <Route path="*" element={<PageNotFound /> } />
         <Route path="/" element={<HomePage /> } />
+        <Route path="/signin" element={<SignIn /> } />
         
       </Routes>
       {shouldShowFooter && <Footer />}
