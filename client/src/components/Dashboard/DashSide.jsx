@@ -25,6 +25,11 @@ const DashSide = () => {
         return savedId ? parseInt(savedId, 10) : 1;
     });
     
+    const handleMenuClick = (id) => {
+        setActiveId(id);
+        localStorage.setItem("activeMenuId", id); // Save the active ID to localStorage
+    };
+
     const menu = [
         {
             id: 1,
@@ -145,7 +150,7 @@ const DashSide = () => {
                                 className={`w-full py-4 px-2 rounded-md my-2 cursor-pointer transition duration-300 ${
                                     activeId === data.id ? 'bg-[#FF5722] text-white' : 'bg-[#FF5722]/10 text-[#FF5722]'
                                 }`}
-                                onClick={() => handleMenuClick(item.id)} // Set active item
+                                onClick={() => handleMenuClick(data.id)} // Set active item
                             >
                                 <div className="flex">
                                     <div className="">
