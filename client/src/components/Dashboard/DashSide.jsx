@@ -10,6 +10,7 @@ import { MdOutlineRequestQuote, MdOutlineReport  } from "react-icons/md";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { BsFillGearFill } from "react-icons/bs";
 import { IoIosNotifications, IoIosHelpCircle  } from "react-icons/io";
+import DashUser from '../../assets/DashUser.png';
 
 
 const DashSide = () => {
@@ -123,10 +124,17 @@ const DashSide = () => {
     ]
   return (
     <div>
-        <div className="">
-            <h1 className="">GoBidly</h1>
-            
+        <div className="text-center text-[#FF5722]">
+            <h1 className="logo-title text-xl ">GoBidly</h1>
+            <p className="">Auction Platform</p>
+
+            <center><img src={DashUser} alt="" className='my-4'/></center>
+
+            <h1 className="uppercase">{RoleUser}</h1>
         </div>
+
+        <hr className="" />
+        
     </div>
   )
 }
