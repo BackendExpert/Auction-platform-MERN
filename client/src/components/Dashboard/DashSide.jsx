@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import secureLocalStorage from 'react-secure-storage'
 import { BiSolidDashboard } from "react-icons/bi";
 import { FaSearchDollar, FaHistory, FaChartLine } from "react-icons/fa";
@@ -11,12 +11,19 @@ import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { BsFillGearFill } from "react-icons/bs";
 import { IoIosNotifications, IoIosHelpCircle  } from "react-icons/io";
 import DashUser from '../../assets/DashUser.png';
+import { Link } from 'react-router-dom';
+
 
 
 const DashSide = () => {
     const EmailUser = secureLocalStorage.getItem('loginE')
     const UsernameUser = secureLocalStorage.getItem('loginU')
     const RoleUser = secureLocalStorage.getItem('loginR')
+
+    const [activeId, setActiveId] = useState(() => {
+        const savedId = localStorage.getItem("activeMenuId");
+        return savedId ? parseInt(savedId, 10) : 1;
+    });
     
     const menu = [
         {
@@ -105,18 +112,12 @@ const DashSide = () => {
         },
         {
             id: 15,
-            name: "Settings",
-            link: '/Dashboard/Settings ',
-            icon: <BsFillGearFill className='h-8 w-auto'/>
-        },
-        {
-            id: 16,
             name: "Notifications",
             link: '/Dashboard/Notifications',
             icon: <IoIosNotifications className='h-8 w-auto'/>
         },
         {
-            id: 17,
+            id: 16,
             name: "Help Center",
             link: '/Dashboard/HelpCenter ',
             icon: <IoIosHelpCircle className='h-8 w-auto'/>
@@ -134,7 +135,32 @@ const DashSide = () => {
         </div>
 
         <hr className="" />
-        
+
+        <div className="my-4">
+            {
+                menu.map((data, index) => {
+                    return (
+                        <Link to={data.link} key={data.id}>
+                            <div
+                                className={`w-full py-4 px-2 rounded-md my-2 cursor-pointer transition duration-300 ${
+                                    activeId === data.id ? 'bg-[#FF5722] text-white' : 'bg-[#FF5722]/10 text-[#FF5722]'
+                                }`}
+                                onClick={() => handleMenuClick(item.id)} // Set active item
+                            >
+                                <div className="flex">
+                                    <div className="">
+                                        {data.icon}
+                                    </div>
+                                    <div className="mt-1 pl-2 font-semibold">
+                                        {data.name}
+                                    </div>
+                                </div>
+                            </div>
+                        </Link>
+                    )
+                })
+            }
+        </div>
     </div>
   )
 }

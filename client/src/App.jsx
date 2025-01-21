@@ -67,6 +67,7 @@ export default function App() {
         <Route path="/PasswordReset/:token" element={<ResetPassword /> } />
         
         <Route path="/Dashboard/" element={ <PrivateRoute element={<Dashboard />} />} >
+          <Route path="*" element={<PageNotFound /> } />
           <Route path="Home" element={<DashHome /> } />
         </Route>
 
