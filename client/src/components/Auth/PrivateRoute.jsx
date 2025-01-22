@@ -6,7 +6,13 @@ const isAuthenticated = () => {
 };
 
 const PrivateRoute = ({ element }) => {
-  return isAuthenticated() ? element : <Navigate to="/signin" />;
+    if (isAuthenticated()) {
+      return element;
+    } else {
+      // Force page reload for /signin
+      window.location.href = "/signin";
+      return null; // Prevent rendering anything else
+    }
 };
 
 export const logout = () => {

@@ -11,6 +11,7 @@ const SignIn = () => {
         email: '',
         password: '',
     })
+    
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -28,11 +29,12 @@ const SignIn = () => {
             .then(res => {
                 if(res.data.Status === "Success"){
                     alert("Login Success")
+                    navigate('/Dashboard/Home')                    
                     localStorage.setItem("login", res.data.Token)
                     secureLocalStorage.setItem("loginE", res.data.Result.email)
                     secureLocalStorage.setItem("loginU", res.data.Result.username)
                     secureLocalStorage.setItem("loginR", res.data.Result.role)
-                    navigate('/Dashboard/Home')                    
+                    window.location.reload()
                 }
                 else{
                     alert(res.data.Error)
@@ -43,6 +45,7 @@ const SignIn = () => {
             console.log(err)
         }
     }
+
 
 
   return (

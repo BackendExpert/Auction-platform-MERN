@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import Nav from "./components/Nav/Nav";
 import { useEffect, useState } from "react";
@@ -8,6 +8,9 @@ import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
 import ResetPassword from "./pages/AuthPages/ResetPassword";
 import ForgetPassword from "./pages/AuthPages/ForgetPassword";
+import PrivateRoute from "./components/Auth/PrivateRoute";
+import Dashboard from "./components/Dashboard/Dashboard";
+import DashHome from "./pages/DashBoard/DashHome";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -62,6 +65,13 @@ export default function App() {
         <Route path="/register" element={<SignUp /> } />
         <Route path="/ForgetPassword" element={<ForgetPassword /> } />
         <Route path="/PasswordReset/:token" element={<ResetPassword /> } />
+        
+        <Route path="/Dashboard/" element={ <PrivateRoute element={<Dashboard />} />} >
+          <Route path="*" element={<PageNotFound /> } />
+          <Route path="Home" element={<DashHome /> } />
+        </Route>
+
+
         
       </Routes>
       {shouldShowFooter && <Footer />}
