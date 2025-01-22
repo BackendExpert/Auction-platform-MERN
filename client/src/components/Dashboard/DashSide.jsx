@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import secureLocalStorage from 'react-secure-storage'
 import { BiSolidDashboard } from "react-icons/bi";
-import { FaSearchDollar, FaHistory, FaChartLine } from "react-icons/fa";
+import { FaSearchDollar, FaHistory, FaChartLine, FaPowerOff } from "react-icons/fa";
 import { FaMoneyBillTrendUp, FaUsers } from "react-icons/fa6";
 import { IoMdTrophy } from "react-icons/io";
 import { PiUserListBold } from "react-icons/pi";
@@ -29,6 +29,11 @@ const DashSide = () => {
         setActiveId(id);
         localStorage.setItem("activeMenuId", id); // Save the active ID to localStorage
     };
+
+    const logout = () => {
+        localStorage.clear()
+        window.location.reload()
+    }
 
     const menu = [
         {
@@ -126,10 +131,10 @@ const DashSide = () => {
             name: "Help Center",
             link: '/Dashboard/HelpCenter ',
             icon: <IoIosHelpCircle className='h-8 w-auto'/>
-        },
+        }
     ]
   return (
-    <div>
+    <div className=''>
         <div className="text-center text-[#FF5722]">
             <h1 className="logo-title text-xl ">GoBidly</h1>
             <p className="">Auction Platform</p>
@@ -144,6 +149,10 @@ const DashSide = () => {
         <div className="my-4">
             {
                 menu.map((data, index) => {
+                    if(RoleUser === 'admin'){
+
+                    }
+                    else if(RoleUser === '')
                     return (
                         <Link to={data.link} key={data.id}>
                             <div
@@ -165,6 +174,12 @@ const DashSide = () => {
                     )
                 })
             }
+            <div className="">
+                <div onClick={logout} className="flex py-5 bg-red-500 rounded pl-3 cursor-pointer">
+                    <FaPowerOff className='h-6 w-auto fill-white'/>
+                    <p className="pl-2 text-white">Logout</p>
+                </div>
+            </div>
         </div>
     </div>
   )

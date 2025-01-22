@@ -40,18 +40,18 @@ const Dashboard = () => {
                 </div>
 
                     {/* Toggle Button */}
-                    <button
-                    className="md:hidden fixed top-4 left-4 z-50 bg-[#FF5722] p-2 rounded font-semibold"
+                <button
+                    className="md:hidden fixed top-8 left-4 z-50 bg-white p-3 rounded font-semibold"
                     onClick={headlemenuopen}
                     >
                     {openside ? (
-                        <FaArrowCircleRight className="fill-white" />
+                        <FaChevronCircleLeft className="fill-[#FF5722]" />
                     ) : (
-                        <FaChevronCircleLeft className="fill-white" />
+                        <FaArrowCircleRight className="fill-[#FF5722]" />
                     )}
-                    </button>
+                </button>
                 
-                <div className="md:w-full md:ml-[21%] pt-4">
+                <div className="md:w-full md:ml-[19%] pt-4">
                   <DashNav />
                   <div className="px-2 md:mr-4   md:mx-0 ml-4 mr-4 py-8">
                     <Outlet />
