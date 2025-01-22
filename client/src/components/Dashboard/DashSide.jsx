@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import secureLocalStorage from 'react-secure-storage'
 import { BiSolidDashboard } from "react-icons/bi";
 import { FaSearchDollar, FaHistory, FaChartLine, FaPowerOff } from "react-icons/fa";
-import { FaMoneyBillTrendUp, FaUsers } from "react-icons/fa6";
+import { FaMoneyBillTrendUp, FaUsers, FaUserGear } from "react-icons/fa6";
 import { IoMdTrophy } from "react-icons/io";
 import { PiUserListBold } from "react-icons/pi";
 import { RiAuctionFill } from "react-icons/ri";
@@ -12,8 +12,6 @@ import { BsFillGearFill } from "react-icons/bs";
 import { IoIosNotifications, IoIosHelpCircle  } from "react-icons/io";
 import DashUser from '../../assets/DashUser.png';
 import { Link } from 'react-router-dom';
-
-
 
 const DashSide = () => {
     const EmailUser = secureLocalStorage.getItem('loginE')
@@ -131,6 +129,12 @@ const DashSide = () => {
             name: "Help Center",
             link: '/Dashboard/HelpCenter ',
             icon: <IoIosHelpCircle className='h-8 w-auto'/>
+        },
+        {
+            id: 17,
+            name: "Account Settings",
+            link: '/Dashboard/AccountSettings ',
+            icon: <FaUserGear className='h-8 w-auto'/>
         }
     ]
   return (
@@ -150,28 +154,97 @@ const DashSide = () => {
             {
                 menu.map((data, index) => {
                     if(RoleUser === 'admin'){
-
+                        if(data.id !== 2 && data.id !== 3 && data.id !== 4 && data.id !== 5 && data.id !== 6 && data.id !== 7 && data.id !== 8 && data.id !== 9){
+                            return (
+                                <Link to={data.link} key={data.id}>
+                                    <div
+                                        className={`w-full py-4 px-2 rounded-md my-2 cursor-pointer transition duration-300 ${
+                                            activeId === data.id ? 'bg-[#FF5722] text-white' : 'bg-[#FF5722]/10 text-[#FF5722]'
+                                        }`}
+                                        onClick={() => handleMenuClick(data.id)} // Set active item
+                                    >
+                                        <div className="flex">
+                                            <div className="">
+                                                {data.icon}
+                                            </div>
+                                            <div className="mt-1 pl-2 font-semibold">
+                                                {data.name}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            )
+                        }
                     }
-                    else if(RoleUser === '')
-                    return (
-                        <Link to={data.link} key={data.id}>
-                            <div
-                                className={`w-full py-4 px-2 rounded-md my-2 cursor-pointer transition duration-300 ${
-                                    activeId === data.id ? 'bg-[#FF5722] text-white' : 'bg-[#FF5722]/10 text-[#FF5722]'
-                                }`}
-                                onClick={() => handleMenuClick(data.id)} // Set active item
-                            >
-                                <div className="flex">
-                                    <div className="">
-                                        {data.icon}
+                    else if(RoleUser === 'moderator'){
+                        if(data.id !== 2 && data.id !== 3 && data.id !== 4 && data.id !== 5 && data.id !== 6 && data.id !== 7 && data.id !== 8 && data.id !== 9 && data.id !== 10){
+                            return (
+                                <Link to={data.link} key={data.id}>
+                                    <div
+                                        className={`w-full py-4 px-2 rounded-md my-2 cursor-pointer transition duration-300 ${
+                                            activeId === data.id ? 'bg-[#FF5722] text-white' : 'bg-[#FF5722]/10 text-[#FF5722]'
+                                        }`}
+                                        onClick={() => handleMenuClick(data.id)} // Set active item
+                                    >
+                                        <div className="flex">
+                                            <div className="">
+                                                {data.icon}
+                                            </div>
+                                            <div className="mt-1 pl-2 font-semibold">
+                                                {data.name}
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="mt-1 pl-2 font-semibold">
-                                        {data.name}
+                                </Link>
+                            )
+                        }
+                    }
+                    else if(RoleUser === 'seller'){
+                        if(data.id !== 2 && data.id !== 3 && data.id !== 4 && data.id !== 5 && data.id !== 10 && data.id !== 11 && data.id !== 12 && data.id !== 13 && data.id !== 14){
+                            return (
+                                <Link to={data.link} key={data.id}>
+                                    <div
+                                        className={`w-full py-4 px-2 rounded-md my-2 cursor-pointer transition duration-300 ${
+                                            activeId === data.id ? 'bg-[#FF5722] text-white' : 'bg-[#FF5722]/10 text-[#FF5722]'
+                                        }`}
+                                        onClick={() => handleMenuClick(data.id)} // Set active item
+                                    >
+                                        <div className="flex">
+                                            <div className="">
+                                                {data.icon}
+                                            </div>
+                                            <div className="mt-1 pl-2 font-semibold">
+                                                {data.name}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </Link>
-                    )
+                                </Link>
+                            )
+                        }
+                    }
+                    else if(RoleUser === 'buyer'){
+                        if(data.id !== 6 && data.id !== 7 && data.id !== 8 && data.id !== 9 && data.id !== 10 && data.id !== 11 && data.id !== 12 && data.id !== 13 && data.id !== 14){
+                            return (
+                                <Link to={data.link} key={data.id}>
+                                    <div
+                                        className={`w-full py-4 px-2 rounded-md my-2 cursor-pointer transition duration-300 ${
+                                            activeId === data.id ? 'bg-[#FF5722] text-white' : 'bg-[#FF5722]/10 text-[#FF5722]'
+                                        }`}
+                                        onClick={() => handleMenuClick(data.id)} // Set active item
+                                    >
+                                        <div className="flex">
+                                            <div className="">
+                                                {data.icon}
+                                            </div>
+                                            <div className="mt-1 pl-2 font-semibold">
+                                                {data.name}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            )
+                        }
+                    }
                 })
             }
             <div className="">
