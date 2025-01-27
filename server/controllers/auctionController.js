@@ -32,7 +32,56 @@ const  auctionController= {
         catch(err){
             console.log(err)
         }
+    },
+
+    allAuction: async(req, res) => {
+        try{
+            const getallAuction = await Auction.find()
+
+            return res.json({ Result: getallAuction })
+        }
+        catch(err){
+            console.log(err)
+        }
+    },
+
+    getbyidAuction: async(req, res) => {
+        try{
+            const AuctionID = req.params.id
+
+            const getAuctionID = await Auction.findById()
+
+            return res.json({ Result: getAuctionID })
+        }
+        catch(err){
+            console.log(err)
+        }
+    },
+
+    updateAuction: async(req, res) => {
+        try{
+            const AuctionID = req.params.id
+            const {
+                description,
+                endDate
+            } = req.body
+
+            const checkAuction = await Auction.findById()
+
+            if(checkAuction){
+                const updateAuction = await Auction.findByIdAndUpdate({
+                    // update
+                })
+            }
+            else{
+                return res.json({ Error: "Error Finding Auction" })
+            }
+        }
+        catch(err){
+            console.log(err)
+        }
     }
+
 };
 
 module.exports = auctionController;
