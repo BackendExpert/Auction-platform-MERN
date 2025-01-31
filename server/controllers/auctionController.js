@@ -3,6 +3,7 @@ const Auction = require("../models/Auction");
 const  auctionController= {
     createauction: async(req, res) => {
         try{
+            const owner = req.params.user
             const {
                 title,
                 description, 
@@ -18,6 +19,7 @@ const  auctionController= {
                 endDate: endDate,
                 startingPrice: startingPrice,
                 currentPrice: startingPrice,
+                owner: owner
             })
 
             const resultAuction = newauction.save()
@@ -49,7 +51,7 @@ const  auctionController= {
         try{
             const AuctionID = req.params.id
 
-            const getAuctionID = await Auction.findById()
+            const getAuctionID = await Auction.findById(AuctionID)
 
             return res.json({ Result: getAuctionID })
         }
