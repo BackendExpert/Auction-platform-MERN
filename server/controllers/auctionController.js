@@ -71,7 +71,10 @@ const  auctionController= {
             if(checkAuction){
                 const Auctionupdate = await Auction.findOneAndUpdate(
                     { _id: AuctionID }, 
-                    { description, endDate }, 
+                    {
+                        description: description,
+                        endDate: endDate
+                    }, 
                     { new: true } 
                 )
 
@@ -84,6 +87,35 @@ const  auctionController= {
             }
             else{
                 return res.json({ Error: "Error Finding Auction" })
+            }
+        }
+        catch(err){
+            console.log(err)
+        }
+    },
+
+    auctionupdateStatus: async(req, res) => {
+        try{
+            const AuctionID = req.params.id
+            const {
+                status
+            } = req.body
+
+            const checkAuction = await Auction.findOne({_id: AuctionID})
+
+            if(checkAuction){
+                const StatusUpdate = await Auction.findOneAndUpdate(
+                    { _id: AuctionID }, 
+                    { status: status }, 
+                    { new: true } 
+                )
+
+                if(StatusUpdate){
+                    return res.json({ Status: "Success"})
+                }
+                else{
+                    return res.json({ Error: 'Interal Server Error while update stauts'})
+                }
             }
         }
         catch(err){
