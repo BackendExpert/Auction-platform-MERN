@@ -30,3 +30,5 @@ const UserMiddelware = (roles) => {
         }
     }
 }
+
+module.exports = UserMiddelware;
