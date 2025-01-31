@@ -140,7 +140,7 @@ const DashSide = () => {
   return (
     <div className=''>
         <div className="text-center text-[#FF5722]">
-            <h1 className="logo-title text-xl ">GoBidly</h1>
+            <h1 className="logo-title text-xl ">Hellobidder</h1>
             <p className="">Auction Platform</p>
 
             <center><img src={DashUser} alt="" className='my-4'/></center>
