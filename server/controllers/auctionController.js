@@ -63,15 +63,24 @@ const  auctionController= {
             const AuctionID = req.params.id
             const {
                 description,
-                endDate
+                endDate,
             } = req.body
 
-            const checkAuction = await Auction.findById()
+            const checkAuction = await Auction.findOne({_id: AuctionID})
 
             if(checkAuction){
-                const updateAuction = await Auction.findByIdAndUpdate({
-                    // update
-                })
+                const Auctionupdate = await Auction.findOneAndUpdate(
+                    { _id: AuctionID }, 
+                    { description, endDate }, 
+                    { new: true } 
+                )
+
+                if(Auctionupdate){
+                    return res.json({ Status: "Success"})
+                }
+                else{
+                    return res.json({ Error: "Internal Server Error White Updating Auction"})
+                }
             }
             else{
                 return res.json({ Error: "Error Finding Auction" })
