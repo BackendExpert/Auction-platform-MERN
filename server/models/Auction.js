@@ -54,8 +54,9 @@ const auctionSchema = new mongoose.Schema({
     ref: 'User', // Reference to a user model
   },
   owner: {
-    type: String,
-    required: true
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',  
+    required: true,
   }
 }, {
   timestamps: true,
