@@ -1,6 +1,6 @@
 import React from 'react'
 import secureLocalStorage from 'react-secure-storage'
-
+import AdminDashBoard from '../../components/Dashboard/AdminDashBoard'
 
 const DashHome = () => {
     const RoleUser = secureLocalStorage.getItem('loginR')
@@ -9,7 +9,7 @@ const DashHome = () => {
     if(RoleUser === "admin"){
         return (
           <div>
-              admin
+              <AdminDashBoard />
           </div>
         )
     }
