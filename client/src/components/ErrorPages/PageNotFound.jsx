@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const PageNotFound = () => {
     const isDashbaord = location.pathname.startsWith("/Dashboard");
   return (
-    <div className='my-32 md:px-32 px-4'>
+    <div className='my-32 xl:px-32 px-4'>
         <center>
             <img src={PageNotFoundImg} alt="" className='h-64 w-auto'/>
 
