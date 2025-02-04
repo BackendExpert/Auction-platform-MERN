@@ -41,7 +41,7 @@ const ForgetPassword = () => {
 
 
   return (
-    <div className='px-32 py-24'>
+    <div className='xl:px-32 px-4 py-24'>
         <div className="xl:grid grid-cols-3 gap-3 mt-16">
             <div className="w-full"></div>
             <div className="w-full">
