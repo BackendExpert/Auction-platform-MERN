@@ -11,7 +11,7 @@ const AdminDashBoard = () => {
                 {
                     admindata.map((data, index) => {
                         return (
-                            <div className="" key={index}>
+                            <div className="bg-[#FF5722] text-white rounded shadow-xl py-4 px-6" key={index}>
                                 <h1 className="">{data.name}</h1>
                             </div>
                         )
