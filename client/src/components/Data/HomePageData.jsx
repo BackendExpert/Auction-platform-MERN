@@ -72,11 +72,11 @@ const HomePageData = () => {
                 (() => {
                     if(visiblecontent === "grid"){
                         return (
-                            <div className="md:grid grid-cols-4 gap-4">
+                            <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-4">
                             {
                                 filteredData.map((data, index) => {
                                     return (
-                                        <div className="bg-gray-100 p-4 rounded shadow-md border-b border-[#FF5722] md:my-0 my-4" key={index}>
+                                        <div className="bg-gray-100 p-4 rounded shadow-md border-b border-[#FF5722] xl:my-0 my-4" key={index}>
                                             <h1 className="text-lg font-semibold text-gray-400">{data.name}</h1>
                                             <center>
                                                 <img src={data.img} alt="" className='w-auto h-40'/>
@@ -87,7 +87,7 @@ const HomePageData = () => {
                                                     Bid Start At {data.start_at} - {data.end_at}
                                                 </h1>
             
-                                                <div className="py-4">
+                                                <div className="py-4 hidden md:hidden xl:block">
                                                     {data.desc}
                                                 </div>
                                             </div>
@@ -126,14 +126,14 @@ const HomePageData = () => {
                                         return (
                                             <div className="w-full bg-gray-100 p-4 my-4 border-b border-[#FF5722] rounded-md shadow-md" key={index}>
                                                 <h1 className="my-4 text-lg text-gray-500">{data.name}</h1>
-                                                <div className="flex">
+                                                <div className="flex md:justify-between">
                                                     <div className="w-1/3">
                                                         <img src={data.img} alt="" className='h-40 w-auto'/>
                                                     </div>
-                                                    <div className="w-full pl-4">
+                                                    <div className="w-full pl-4 hidden xl:block">
                                                         {data.desc}
                                                     </div>
-                                                    <div className="w-1/3">
+                                                    <div className="xl:w-1/3">
                                                         <h1 className="text-center">Buyers : <span className='text-[#FF5722] font-semibold'>{data.buyers}</span></h1>
                                                         <div className="">
                                                             <h1 className="text-gray-500 font-semibold pt-4 text-center">
