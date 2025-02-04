@@ -1,34 +1,32 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
 
-const UserMiddelware = (roles) => {
-    return async(req, res, next) => {
-        try{
-            const token = req.headers.authorization?.split(' ')[1];
-
-            if(!token){
-                return res.json({ Error: "No token Provided..."})
-            }
-    
-            const decoded = jwt.verify(token, process.env.JWT_SECRET); 
-            req.user = decoded;
-    
-            const checkuser = await User.findById(req.user.id)
-    
-            if(!checkuser){
-                return res.json({ Error: "No User Found"})
-            }
-    
-            if (!roles.includes(checkuser.role)) {
-                return res.json({ Error: "Access denied"})
-            }
-
-            next();
-        }
-        catch(err){
-            console.log(err)
-        }
+const authMiddleware = (req, res, next) => {
+    const token = req.header('Authorization');
+    if (!token) {
+        return res.status(401).json({ message: 'Access denied. No token provided.' });
     }
-}
 
-module.exports = UserMiddelware;
+    try {
+        const decoded = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET);
+        req.user = decoded;
+        next();
+    } catch (error) {
+        res.status(400).json({ message: 'Invalid token.' });
+    }
+};
+
+const accessMiddleware = (roles = []) => {
+    return (req, res, next) => {
+        if (!req.user) {
+            return res.status(401).json({ message: 'Unauthorized access.' });
+        }
+        
+        if (roles.includes(req.user.role) || req.user.isRepoCreator) {
+            return next();
+        }
+        
+        return res.status(403).json({ message: 'Forbidden: You do not have access to this resource.' });
+    };
+};
+
+module.exports = { authMiddleware, accessMiddleware };

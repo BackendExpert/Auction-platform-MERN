@@ -1,13 +1,16 @@
 const express = require('express');
 const auctionController = require('../controllers/auctionController');
-const UserMiddelware = require('../middlewares/UserMiddleware');
+const { authMiddleware, accessMiddleware } = require('../middlewares/UserMiddleware');
+const upload = require('../middlewares/uploadMiddleware');
+
+
 
 const router = express.Router();
 
-router.post('/createauction/:user', UserMiddelware(['seller', 'admin']), auctionController.createauction)
+router.post('/createauction/:user', authMiddleware, accessMiddleware(['admin', 'seller']), upload.single('image'), auctionController.createauction)
 router.get('/allauction', auctionController.allAuction)
 router.get('/viewauction/:id', auctionController.getbyidAuction)
-router.post('/updateAuction/:id', UserMiddelware(['seller', 'admin']), auctionController.updateAuction)
-router.post('/auctionupdateStatus/:id', UserMiddelware(['seller', 'admin']), auctionController.auctionupdateStatus)
+router.post('/updateAuction/:id/:user', authMiddleware, accessMiddleware(['admin', 'seller']), auctionController.updateAuction)
+router.post('/auctionupdateStatus/:id/:user', authMiddleware, accessMiddleware(['admin', 'seller']), auctionController.auctionupdateStatus)
 
 module.exports = router;
