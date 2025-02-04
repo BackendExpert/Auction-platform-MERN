@@ -19,7 +19,7 @@ const AdminDashBoard = () => {
                                     </div>
                                     <div className="">
                                         <h1 className="text-xl font-semibold">{data.name}</h1>
-                                        <p className="text-right"><Countup end={data.value} duration={5}/></p>
+                                        <p className="text-right text-xl pt-2">{ data.id === 4 ? <span className='font-semibold pr-2'>$</span> : <span></span>}<Countup end={data.value} duration={5}/> + </p>
                                     </div>
                                 </div>
                             </div>
