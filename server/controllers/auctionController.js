@@ -3,6 +3,7 @@ const Auction = require("../models/Auction");
 const  auctionController= {
     createauction: async(req, res) => {
         try{
+            const image = req.file.path
             const owner = req.params.user
             const {
                 title,
@@ -19,7 +20,8 @@ const  auctionController= {
                 endDate: endDate,
                 startingPrice: startingPrice,
                 currentPrice: startingPrice,
-                owner: owner
+                owner: owner,
+                ImgURL: image
             })
 
             const resultAuction = newauction.save()
