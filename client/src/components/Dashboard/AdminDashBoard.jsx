@@ -1,6 +1,8 @@
 import React from 'react'
 import { admindata } from './DashData'
 import Countup from 'react-countup'
+import ChartBar from '../Charts/ChartBar'
+
 
 const AdminDashBoard = () => {
   return (
@@ -27,7 +29,12 @@ const AdminDashBoard = () => {
                     })
                 }
             </div>
-
+        </div>
+        <div className="xl:flex ">
+            <div className="xl:w-1/2 w-full my-4">
+                <ChartBar />
+            </div>
+            <div className="">hi </div>
         </div>
     </div>
   )
