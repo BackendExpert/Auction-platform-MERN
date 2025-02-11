@@ -2,6 +2,7 @@ import React from 'react'
 import { admindata } from './DashData'
 import Countup from 'react-countup'
 import ChartBar from '../Charts/ChartBar'
+import AdminDashTable from './AdminDashTable'
 
 
 const AdminDashBoard = () => {
@@ -31,10 +32,56 @@ const AdminDashBoard = () => {
             </div>
         </div>
         <div className="xl:flex ">
-            <div className="xl:w-1/2 w-full my-4">
+            <div className="w-full my-4 md:block hidden">
                 <ChartBar />
             </div>
-            <div className="">hi </div>
+            <div className="mt-4 w-full">
+                    <h1 className="text-xl text-[#FF5722] font-semibold uppercase">Best Sallers</h1>
+                    
+                    <table className='table-auto w-full py-2 rounded mt-2'>
+                        <thead className='bg-[#FF5722]'>
+                            <tr className='text-white'>
+                                <th className='py-4 w-1/4'>Rank</th>
+                                <th className='py-4 w-1/2'>Name</th>
+                                <th className='py-4 w-1/4'>Sales</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className='h-12 text-center bg-gray-100 border-b border-gray-300'>
+                                <td className='font-semibold'>1</td>
+                                <td>Kamal</td>
+                                <td>500</td>
+                            </tr>
+                            <tr className='h-12 text-center bg-gray-100 border-b border-gray-300'>
+                                <td className='font-semibold'>1</td>
+                                <td>Kamal</td>
+                                <td>500</td>
+                            </tr>
+                            <tr className='h-12 text-center bg-gray-100 border-b border-gray-300'>
+                                <td className='font-semibold'>1</td>
+                                <td>Kamal</td>
+                                <td>500</td>
+                            </tr>
+                            <tr className='h-12 text-center bg-gray-100 border-b border-gray-300'>
+                                <td className='font-semibold'>1</td>
+                                <td>Kamal</td>
+                                <td>500</td>
+                            </tr>
+                            <tr className='h-12 text-center bg-gray-100 border-b border-gray-300'>
+                                <td className='font-semibold'>1</td>
+                                <td>Kamal</td>
+                                <td>500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+            </div>
+        </div>
+
+
+        <div className="mt-8">
+            <AdminDashTable />
         </div>
     </div>
   )
