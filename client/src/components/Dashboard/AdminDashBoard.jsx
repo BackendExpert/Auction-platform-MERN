@@ -3,12 +3,24 @@ import { admindata } from './DashData'
 import Countup from 'react-countup'
 import ChartBar from '../Charts/ChartBar'
 import AdminDashTable from './AdminDashTable'
-
+import secureLocalStorage from 'react-secure-storage'
 
 const AdminDashBoard = () => {
+    const RoleUser = secureLocalStorage.getItem('loginR')
+    const EmailUser = secureLocalStorage.getItem('loginE')
+
   return (
     <div>
-        <h1 className="uppercase text-[#FF5722] font-semibold text-xl">admin dashboard</h1>
+        <h1 className="uppercase text-[#FF5722] font-semibold text-xl flex">{
+            (() => {
+                if(RoleUser === "admin"){
+                    return <div className="font-semibold">Admin</div>
+                }
+                if(RoleUser === "moderator"){
+                    return <div className="font-semibold">moderator</div>
+                }
+            })()    
+        } <p className="pl-2"> dashboard</p></h1>
 
         <div className="">
             <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-4 mt-4">

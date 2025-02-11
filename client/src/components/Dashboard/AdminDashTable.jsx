@@ -16,25 +16,50 @@ const AdminDashTable = () => {
             <tbody>
                 <tr className='h-12 text-center bg-gray-100 border-b border-gray-200'>
                     <td className='font-semibold'>1</td>
-                    <td>Jhean</td>
+                    <td>
+                        <div className="flex items-center justify-center">
+                            <div className="flex items-center space-x-2 bg-gray-100 p-4 rounded-lg">
+                                <img src="https://avatars.githubusercontent.com/u/138636749?v=4" alt="" className="rounded-full h-8 w-auto"/>
+                                <p className="font-semibold">Jehan</p>
+                            </div>
+                        </div>
+
+                    </td>
                     <td>123</td>
                     <td>$500.00</td>
-                    <td>Kamal</td>
+                    <td>
+                        <div className="flex items-center justify-center">
+                            <div className="flex items-center space-x-2 bg-gray-100 p-4 rounded-lg">
+                                <img src="https://avatars.githubusercontent.com/u/138636749?v=4" alt="" className="rounded-full h-8 w-auto"/>
+                                <p className="font-semibold">Jehan</p>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 <tr className='h-12 text-center bg-gray-100 border-b border-gray-200'>
-                    <td className='font-semibold'>2</td>
-                    <td>Jhean</td>
+                    <td className='font-semibold'>1</td>
+                    <td>
+                        <div className="flex items-center justify-center">
+                            <div className="flex items-center space-x-2 bg-gray-100 p-4 rounded-lg">
+                                <img src="https://avatars.githubusercontent.com/u/138636749?v=4" alt="" className="rounded-full h-8 w-auto"/>
+                                <p className="font-semibold">Jehan</p>
+                            </div>
+                        </div>
+
+                    </td>
                     <td>123</td>
                     <td>$500.00</td>
-                    <td>Kamal</td>
+                    <td>
+                        <div className="flex items-center justify-center">
+                            <div className="flex items-center space-x-2 bg-gray-100 p-4 rounded-lg">
+                                <img src="https://avatars.githubusercontent.com/u/138636749?v=4" alt="" className="rounded-full h-8 w-auto"/>
+                                <p className="font-semibold">Jehan</p>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
-                <tr className='h-12 text-center bg-gray-100 border-b border-gray-200'>
-                    <td className='font-semibold'>3</td>
-                    <td>Jhean</td>
-                    <td>123</td>
-                    <td>$500.00</td>
-                    <td>Kamal</td>
-                </tr>
+
+
             </tbody>
         </table>
     </div>

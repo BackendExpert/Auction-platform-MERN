@@ -16,7 +16,7 @@ const DashHome = () => {
     else if(RoleUser === "moderator"){
         return (
           <div>
-
+              <AdminDashBoard />
           </div>
         )
     }
