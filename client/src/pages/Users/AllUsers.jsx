@@ -80,7 +80,7 @@ const AllUsers = () => {
                                     <span className="border-2 rounded-md text-red-600 font-semibold border-red-600 px-4 py-1">Active</span>
                                 </td>
                                 <td>
-                                    <Link>
+                                    <Link to={'/Dashboard/ViewUser/' + user.id}>
                                         <DefultBtn type={'button'} btnvalue={'View'}/>
                                     </Link>
                                 </td>

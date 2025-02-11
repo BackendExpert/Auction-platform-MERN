@@ -12,6 +12,7 @@ import PrivateRoute from "./components/Auth/PrivateRoute";
 import Dashboard from "./components/Dashboard/Dashboard";
 import DashHome from "./pages/DashBoard/DashHome";
 import UserManagement from "./pages/Users/UserManagement";
+import ViewUser from "./pages/Users/ViewUser";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -71,6 +72,7 @@ export default function App() {
           <Route path="*" element={<PageNotFound /> } />
           <Route path="Home" element={<DashHome /> } />
           <Route path="UserManagement" element={<UserManagement /> } />
+          <Route path="ViewUser/:id" element={<ViewUser /> } />
         </Route>
 
 
