@@ -11,6 +11,7 @@ import ForgetPassword from "./pages/AuthPages/ForgetPassword";
 import PrivateRoute from "./components/Auth/PrivateRoute";
 import Dashboard from "./components/Dashboard/Dashboard";
 import DashHome from "./pages/DashBoard/DashHome";
+import UserManagement from "./pages/Users/UserManagement";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -69,6 +70,7 @@ export default function App() {
         <Route path="/Dashboard/" element={ <PrivateRoute element={<Dashboard />} />} >
           <Route path="*" element={<PageNotFound /> } />
           <Route path="Home" element={<DashHome /> } />
+          <Route path="UserManagement" element={<UserManagement /> } />
         </Route>
 
 
