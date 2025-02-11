@@ -80,7 +80,7 @@ const AdminDashBoard = () => {
         </div>
 
 
-        <div className="mt-8">
+        <div className="mt-8 md:block hidden">
             <AdminDashTable />
         </div>
     </div>
