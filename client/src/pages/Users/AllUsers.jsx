@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import InputDefult from '../../components/Forms/InputDefult';
+import DefultBtn from '../../components/Buttons/DefultBtn';
+import { Link } from 'react-router-dom';
 
 
 const AllUsers = () => {
@@ -78,7 +80,9 @@ const AllUsers = () => {
                                     <span className="border-2 rounded-md text-red-600 font-semibold border-red-600 px-4 py-1">Active</span>
                                 </td>
                                 <td>
-                                    VIew
+                                    <Link>
+                                        <DefultBtn type={'button'} btnvalue={'View'}/>
+                                    </Link>
                                 </td>
                             </tr>
                         )
