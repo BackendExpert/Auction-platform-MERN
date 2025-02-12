@@ -4,6 +4,7 @@ import { FaBox } from "react-icons/fa";
 import { FaCircleDollarToSlot } from "react-icons/fa6";
 import CountUp from 'react-countup';
 import CharBarSaller from '../Charts/CharBarSaller';
+import SallerOnGoingAuction from './SallerOnGoingAuction';
 
 const SallerDashboard = () => {
     const sallerData = [
@@ -77,6 +78,15 @@ const SallerDashboard = () => {
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+
+
+        <div className="mt-8">
+            <h1 className="text-xl uppercase text-[#FF5722] font-semibold">On Going Auctions</h1>
+            
+            <div className="mt-4">
+                <SallerOnGoingAuction />
             </div>
 
         </div>
