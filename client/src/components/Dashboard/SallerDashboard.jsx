@@ -57,7 +57,31 @@ const SallerDashboard = () => {
             <div className="w-1/2">
                 <CharBarSaller />
             </div>
+
+            <div className="w-full">
+                <table className='w-full'>
+                    <thead>
+                        <tr className='w-full bg-[#FF5722] h-12 text-white'>
+                            <th>Income for</th>
+                            <th>Income</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className='h-12 border-b border-gray-200 text-center text-gray-500'>
+                            <td>Auction</td>
+                            <td>$ 500.00</td>
+                        </tr>
+                        <tr className='h-12 border-b border-gray-200 text-center text-gray-500'>
+                            <td>Auction</td>
+                            <td>$ 500.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
+
+
 
     </div>
   )
