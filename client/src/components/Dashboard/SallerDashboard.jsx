@@ -3,6 +3,7 @@ import { RiAuctionLine } from "react-icons/ri";
 import { FaBox } from "react-icons/fa";
 import { FaCircleDollarToSlot } from "react-icons/fa6";
 import CountUp from 'react-countup';
+import CharBarSaller from '../Charts/CharBarSaller';
 
 const SallerDashboard = () => {
     const sallerData = [
@@ -50,6 +51,12 @@ const SallerDashboard = () => {
                     )
                 })
             }
+        </div>
+
+        <div className="md:flex mt-4">
+            <div className="w-1/2">
+                <CharBarSaller />
+            </div>
         </div>
 
     </div>
