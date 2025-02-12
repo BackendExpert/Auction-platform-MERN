@@ -1,6 +1,7 @@
 import React from 'react'
 import secureLocalStorage from 'react-secure-storage'
 import AdminDashBoard from '../../components/Dashboard/AdminDashBoard'
+import SallerDashboard from '../../components/Dashboard/SallerDashboard'
 
 const DashHome = () => {
     const RoleUser = secureLocalStorage.getItem('loginR')
@@ -23,7 +24,7 @@ const DashHome = () => {
     else if(RoleUser === "seller"){
         return (
           <div>
-
+              <SallerDashboard />
           </div>
         )
     }
