@@ -55,7 +55,7 @@ const SallerDashboard = () => {
         </div>
 
         <div className="md:flex mt-4">
-            <div className="w-1/2">
+            <div className="w-full">
                 <CharBarSaller />
             </div>
 
