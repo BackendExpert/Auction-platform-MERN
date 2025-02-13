@@ -11,17 +11,9 @@ import ForgetPassword from "./pages/AuthPages/ForgetPassword";
 import PrivateRoute from "./components/Auth/PrivateRoute";
 import Dashboard from "./components/Dashboard/Dashboard";
 import DashHome from "./pages/DashBoard/DashHome";
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 import UserManagement from "./pages/Users/UserManagement";
 import ViewUser from "./pages/Users/ViewUser";
 import CreateAuction from "./pages/Auction/CreateAuction";
->>>>>>> Stashed changes
-=======
-import UserManagement from "./pages/Users/UserManagement";
-import ViewUser from "./pages/Users/ViewUser";
->>>>>>> 9ecb9ea7eb045f284a4b69714bb7b29530f9fb57
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
