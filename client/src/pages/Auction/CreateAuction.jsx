@@ -3,6 +3,7 @@ import InputDefult from '../../components/Forms/InputDefult';
 import InputTextArea from '../../components/Forms/InputTextArea';
 import InputDate from '../../components/Forms/InputDate';
 import InputImage from '../../components/Forms/InputImage';
+import DefultBtn from '../../components/Buttons/DefultBtn';
 
 const CreateAuction = () => {
     const [AuctionData, SetAuctionData] = useState({
@@ -38,7 +39,15 @@ const CreateAuction = () => {
         e.preventDefault()
 
         try{
-        
+            const formData = new FormData();
+            formData.append('image', AuctionData.image);
+            formData.append('title', AuctionData.title);
+            formData.append('description', AuctionData.description);
+            formData.append('startDate', AuctionData.startDate);
+            formData.append('endDate', AuctionData.endDate);
+            formData.append('startingPrice', AuctionData.startingPrice);
+
+            
         }
         catch(err){
             console.log(err)
@@ -128,13 +137,26 @@ const CreateAuction = () => {
                         <div className="p-4">
                             <InputImage 
                                 name={'image'}
-                                value={AuctionData.image}
                                 accept={'image/*'}
+                                onChange={handleImageChange}
                             />
                         </div>
                     </div>
 
+                    <div className="my-4">
+                        <button type='submit' className='text-white font-semibold w-full py-4 rounded bg-[#FF5722]'>Create Auction</button>
+                    </div>
+
                 </form>
+            </div>
+
+            <div className="">
+                {imagePreview && (
+                    <div>
+                        <h3>Image Preview:</h3>
+                        <img src={imagePreview} alt="Preview" style={{ width: '200px' }} />
+                    </div>
+                )}
             </div>
 
         </div>
