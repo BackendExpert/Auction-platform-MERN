@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import InputDefult from '../../components/Forms/InputDefult';
 import InputTextArea from '../../components/Forms/InputTextArea';
+import InputDate from '../../components/Forms/InputDate';
+import InputImage from '../../components/Forms/InputImage';
 
 const CreateAuction = () => {
     const [AuctionData, SetAuctionData] = useState({
@@ -78,6 +80,60 @@ const CreateAuction = () => {
                             />
                         </div>
                     </div>
+
+                    <div className="my-4">
+                        <p className="text-[#FF5722]">Auction Start Date : </p>
+
+                        <div className="p-4">
+                            <InputDate 
+                                name={'startDate'}
+                                value={AuctionData.startDate}
+                                required={true}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="my-4">
+                        <p className="text-[#FF5722]">Auction End Date : </p>
+
+                        <div className="p-4">
+                            <InputDate 
+                                name={'startDate'}
+                                value={AuctionData.endDate}
+                                required={true}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="">
+                        <p className="text-[#FF5722]">Auction Starting Price : </p>
+
+                        <div className="p-4">
+                            <InputDefult 
+                                type={'number'}
+                                name={'startingPrice'}
+                                value={AuctionData.startingPrice}
+                                required={true}
+                                placeholder={"Auction Starting Price"}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="">
+                        <p className="text-[#FF5722]">Auction Starting Price : </p>
+
+                        <div className="p-4">
+                            <InputImage 
+                                name={'image'}
+                                value={AuctionData.image}
+                                accept={'image/*'}
+                            />
+                        </div>
+                    </div>
+
                 </form>
             </div>
 
