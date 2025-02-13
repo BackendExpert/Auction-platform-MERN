@@ -30,7 +30,6 @@ const CreateAuction = () => {
           setImagePreview(URL.createObjectURL(file));
         }
     };
-
     const headleSubmit = (e) => {
         e.preventDefault()
 
@@ -50,6 +49,7 @@ const CreateAuction = () => {
             <form onSubmit={headleSubmit} method="post"></form>
         </div>
     </div>
+
   )
 }
 
